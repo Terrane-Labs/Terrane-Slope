@@ -1,17 +1,20 @@
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="assets/logo/GeoKinematics-3D-dark.svg"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="assets/logo/GeoKinematics-3D-light.svg"
-  />
-  <img
-    src="assets/logo/GeoKinematics-3D-light.svg"
-    alt="GeoKinematics-3D"
-  />
-</picture>
+<div align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="docs/assets/logo/GeoKinematics-3D-vector-dark.svg"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="docs/assets/logo/GeoKinematics-3D-vector.svg"
+    />
+    <img
+      src="docs/assets/logo/GeoKinematics-3D-vector.svg"
+      alt="GeoKinematics-3D"
+      width="550"
+    />
+  </picture>
+</div>
 
 # GeoKinematics-3D
 
