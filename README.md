@@ -1,6 +1,17 @@
-<div align="center">
-  <img src="./docs/assets/GeoKinematics-3D.svg" alt="Logo" width="550" />
-</div>
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="assets/logo/GeoKinematics-3D-dark.svg"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="assets/logo/GeoKinematics-3D-light.svg"
+  />
+  <img
+    src="assets/logo/GeoKinematics-3D-light.svg"
+    alt="GeoKinematics-3D"
+  />
+</picture>
 
 # GeoKinematics-3D
 
