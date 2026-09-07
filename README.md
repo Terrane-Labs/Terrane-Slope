@@ -18,6 +18,11 @@
 
 # GeoKinematics-3D
 
+[![CI](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml/badge.svg)](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Stage](https://img.shields.io/badge/Stage-Phase%202A.1%20Complete-green.svg)](#roadmap)
+[![RepoGrade](https://www.repo-grade.com/api/badge/nabielnovelkhubran/geokinematics-3d)](https://www.repo-grade.com/report/nabielnovelkhubran/geokinematics-3d)
+
 Browser-based software for rock-slope kinematic analysis, combining geological geometry, stereonet mathematics, 3D visualization, and Rust/WASM computation.
 
 > **Status:** Phase 1 complete · Phase 2A.1 complete
