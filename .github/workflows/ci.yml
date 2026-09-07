@@ -1,29 +1,84 @@
-name: CI
+﻿name: CI
 
 on:
   push:
+    branches:
+      - main
+      - master
   pull_request:
+    branches:
+      - main
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   verify:
+    name: Verify & Test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
         with:
-          version: 11.16.0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
           targets: wasm32-unknown-unknown
-      - uses: Swatinem/rust-cache@v2
+          components: rustfmt, clippy
+
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
         with:
           workspaces: . -> target
-      - run: cargo install wasm-pack --locked
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm verify
+
+      - name: Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.16.0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers and dependencies
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Check code formatting
+        run: |
+          pnpm format:check
+          cargo fmt --check
+
+      - name: Build WebAssembly core
+        run: pnpm wasm:build
+
+      - name: Lint code
+        run: |
+          pnpm lint
+          cargo clippy --workspace --all-targets --all-features -- -D warnings
+
+      - name: Type check TypeScript
+        run: pnpm typecheck
+
+      - name: Run unit tests
+        run: |
+          pnpm test
+          cargo test --workspace
+
+      - name: Build web application
+        run: pnpm build
+
+      - name: Run end-to-end tests
+        run: pnpm test:e2e

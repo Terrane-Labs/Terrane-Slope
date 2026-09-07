@@ -3,6 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@11.16.0",
+  "description": "Deterministic computational platform for rock-slope kinematic analysis, combining geological geometry, stereonet projection, 3D visualization, and Rust/WASM algorithms.",
+  "homepage": "https://github.com/nabielnovelkhubran/GeoKinematics-3D#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabielnovelkhubran/GeoKinematics-3D.git"
+  },
+  "keywords": [
+    "geotechnical-engineering",
+    "rock-mechanics",
+    "kinematic-analysis",
+    "stereonet",
+    "wulff-net",
+    "structural-geology",
+    "wasm",
+    "rust",
+    "threejs",
+    "slope-stability"
+  ],
+  "author": "nabiel khubran",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "pnpm wasm:build && pnpm --filter @geokinematics/web dev",
     "build": "pnpm wasm:build && pnpm -r --if-present build",
