@@ -77,7 +77,14 @@ importers:
         specifier: workspace:*
         version: link:../domain
 
-  packages/kinematics: {}
+  packages/kinematics:
+    dependencies:
+      '@geokinematics/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@geokinematics/geometry':
+        specifier: workspace:*
+        version: link:../geometry
 
   packages/numerics: {}
 
