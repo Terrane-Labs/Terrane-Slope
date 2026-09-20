@@ -1,8 +1,6 @@
-﻿# Contributing to GeoKinematics-3D
+# Contributing to GeoKinematics-3D
 
-Thank you for your interest in contributing to **GeoKinematics-3D**! This project is a specialized computational platform for rock-slope kinematic analysis, combining geological coordinate geometry, equal-angle stereonet projections, 3D visualization, and WebAssembly computation.
-
-To preserve scientific rigor, mathematical stability, and architectural clarity, please read this guide thoroughly before submitting contributions.
+GeoKinematics-3D is a browser-based rock-slope kinematic analysis tool built on strict coordinate conventions and deterministic geometry. If you break a coordinate convention or introduce a numerical inconsistency, it propagates into wrong engineering results. Read the scientific conventions and architecture boundaries below before submitting changes.
 
 ---
 

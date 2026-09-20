@@ -20,35 +20,35 @@
 
 [![CI](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml/badge.svg)](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Stage](https://img.shields.io/badge/Stage-Phase%202A.1%20Complete-green.svg)](#roadmap)
+[![Stage](https://img.shields.io/badge/Stage-Phase%202A.2%20Complete-green.svg)](#roadmap)
 [![RepoGrade](https://www.repo-grade.com/api/badge/nabielnovelkhubran/geokinematics-3d)](https://www.repo-grade.com/report/nabielnovelkhubran/geokinematics-3d)
 
 Browser-based software for rock-slope kinematic analysis, combining geological geometry, stereonet mathematics, 3D visualization, and Rust/WASM computation.
 
-> **Status:** Phase 1 complete · Phase 2A.1 complete
+> **Status:** Phase 1 complete · Phase 2A.2 complete
 
 ## Current state
 
-The project is currently focused on building and testing the mathematical and software foundations required for kinematic analysis.
+The project builds geometry from the coordinate conventions upward. Each layer is tested before the next is built on top of it.
 
-Implemented so far:
+Implemented:
 
-- East-North-Up (ENU) coordinate convention
-- Geological line and plane orientations
-- 3D vector operations
-- Plane geometry and normal handling
-- Plane intersection calculations
-- Wulff lower-hemisphere equal-angle projection
-- Lineation and plane-pole projection
-- Plane great-circle generation
-- Small-circle projection geometry
-- Downward line direction canonicalization
-- Slope face and friction angle domain types
-- Dedicated kinematic angular tolerance
+- East-North-Up (ENU) coordinate convention with deterministic normal canonicalization
+- Geological line and plane orientations (trend/plunge, dip direction/dip)
+- 3D vector operations, plane geometry, and plane intersection
+- Wulff lower-hemisphere equal-angle stereonet projection
+- Lineation projection, plane-pole projection, great-circle generation
+- Small-circle projection geometry and downward direction canonicalization
+- Slope face, friction angle, and kinematic angular tolerance domain types
+- Kinematic admissibility evaluators: planar sliding, wedge sliding, direct toppling
 - Rust/WASM computation boundary
-- React/SVG interactive stereonet visualization and workspace inspector
+- Interactive SVG stereonet with cursor tracking, feature selection, and workspace inspector
+- 212+ unit tests across 4 packages, Playwright E2E tests, Rust tests
+- CI pipeline: format, lint, typecheck, test, build, E2E, Rust checks
 
-Kinematic evaluation algorithms (planar, wedge, toppling) and slope configuration UI are not implemented yet.
+The kinematic evaluators are pure deterministic functions with no React, DOM, or browser dependencies. They live in `packages/kinematics` and are independently testable.
+
+Slope configuration UI and stereonet overlay of kinematic envelopes are not implemented yet.
 
 ## Roadmap
 
@@ -60,7 +60,8 @@ Kinematic evaluation algorithms (planar, wedge, toppling) and slope configuratio
 | 1C    | Stereonet mathematics               | Complete |
 | 1D    | Stereonet visualization             | Complete |
 | 2A.1  | Domain & geometry envelopes         | Complete |
-| 2A.2+ | Kinematic analysis                  | Planned  |
+| 2A.2  | Kinematic admissibility evaluators  | Complete |
+| 2A.3+ | Kinematic visualization & UI        | Planned  |
 | 3     | Interactive 3D geological workspace | Planned  |
 | 4     | Limit-equilibrium analysis          | Planned  |
 
@@ -165,6 +166,7 @@ GeoKinematics-3D/
 ├── packages/
 │   ├── domain/               # Shared domain types
 │   ├── geometry/             # Vector, plane, stereonet mathematics
+│   ├── kinematics/           # Kinematic admissibility evaluators
 │   └── ui/                   # React visualization components
 │
 ├── crates/
@@ -179,13 +181,17 @@ The dependency direction is kept deliberately simple:
 ```text
 web
  │
+ ├── kinematics
+ │     │
+ │     ├── geometry
+ │     │     │
+ │     │     └── domain
+ │     │
+ │     └── domain
+ │
  ├── ui
  │
- ├── domain
- │
- └── geometry
-       │
-       └── domain
+ └── domain
 
 Rust/WASM
    │
@@ -370,12 +376,12 @@ docs/decisions/ADR-008-stereonet-projection.md
 - [x] Small-circle projection geometry (Phase 2A.1)
 - [x] Downward line direction canonicalization (Phase 2A.1)
 - [x] Kinematic angular tolerance definition (Phase 2A.1)
-- [ ] Planar sliding (Phase 2A.2+)
-- [ ] Wedge sliding (Phase 2A.2+)
-- [ ] Direct toppling (Phase 2A.2+)
-- [ ] Kinematic admissibility (Phase 2A.2+)
-- [ ] Friction-angle constraints & daylight envelopes (Phase 2A.2+)
-- [ ] Critical-plane identification (Phase 2A.2+)
+- [x] Planar sliding evaluator (Phase 2A.2)
+- [x] Wedge sliding evaluator (Phase 2A.2)
+- [x] Direct toppling evaluator (Phase 2A.2)
+- [x] Kinematic admissibility with strict boundary conditions (Phase 2A.2)
+- [ ] Friction-angle constraints & daylight envelope visualization (Phase 2A.3+)
+- [ ] Critical-plane identification (Phase 2A.3+)
 
 ### Phase 3 | 3D geological workspace
 
@@ -426,7 +432,7 @@ This is particularly important for the geometry and numerical code, where small 
 
 ## License
 
-See the repository license for licensing terms.
+Apache License 2.0. See [LICENSE](LICENSE) for terms.
 
 ---
 

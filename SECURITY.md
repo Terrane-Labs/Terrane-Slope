@@ -1,8 +1,6 @@
-﻿# Security Policy
+# Security Policy
 
 ## Supported Versions
-
-We actively maintain and provide security updates for the following versions of GeoKinematics-3D:
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -11,25 +9,23 @@ We actively maintain and provide security updates for the following versions of 
 
 ## Reporting a Vulnerability
 
-The GeoKinematics-3D team takes the security and integrity of our software and mathematical algorithms seriously. If you discover a security vulnerability or potential threat in this repository, please report it privately rather than opening a public issue.
+If you find a security issue, please report it privately rather than opening a public issue.
 
 ### How to Report
 
-Please send an email to **nabielnovelkhubran@gmail.com** with the subject line:
+Email **nabielnovelkhubran@gmail.com** with the subject line:
 `[SECURITY] GeoKinematics-3D Vulnerability Report`
 
-Include the following information in your report:
+Include:
 
-1. **Description:** A detailed explanation of the vulnerability.
-2. **Impact:** What kind of exploit or risk this vulnerability enables.
-3. **Steps to Reproduce:** Minimal reproduction steps, configuration, or proof of concept.
-4. **Environment:** Affected versions, operating system, and browser if applicable.
-5. **Mitigation:** Any proposed fix or workaround you have identified.
+1. **Description:** What the vulnerability is.
+2. **Impact:** What it enables.
+3. **Steps to Reproduce:** Minimal reproduction or proof of concept.
+4. **Environment:** Affected versions, OS, browser if applicable.
+5. **Mitigation:** Any fix or workaround you've identified.
 
 ### Response Timeline
 
-- **Initial Acknowledgment:** Within 48 hours of receiving your email.
-- **Triage & Confirmation:** Within 5 business days, confirming whether the vulnerability is validated.
-- **Remediation:** We will coordinate a patched release and acknowledge your contribution in the security advisory (unless you prefer to remain anonymous).
+This is a solo-maintained project. I'll acknowledge your report as soon as I can, typically within a week. Validated issues will be patched and credited in a security advisory (unless you prefer anonymity).
 
-Please do not publicly disclose the vulnerability until a patch has been released and an advisory published.
+Do not publicly disclose the vulnerability until a patch is released.
