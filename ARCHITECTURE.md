@@ -5,8 +5,8 @@
 - `apps/web` is the Next.js presentation shell and owns browser integration only.
 - `packages/domain` defines portable domain vocabulary; the remaining package directories reserve independent scientific capabilities.
 - `packages/geometry` owns pure ENU transforms, stereonet projection, and deterministic normal canonicalization.
-- `packages/kinematics` owns kinematic admissibility evaluation (planar sliding, wedge sliding, direct toppling). Imports from `geometry` and `domain`. No React or browser dependencies.
-- `packages/ui` contains reusable React presentation components only.
+- `packages/kinematics` owns kinematic admissibility evaluation (planar sliding, wedge sliding, direct toppling) and the pole-space overlay geometry for planar sliding and direct toppling (ADR-009). Imports from `geometry` and `domain`. No React or browser dependencies.
+- `packages/ui` contains reusable React presentation components only. It renders pre-projected overlays and a semantic pole status; it does not import `kinematics`.
 - `crates/geokinematics-core` owns performance-sensitive, deterministic computation exposed to the browser through WebAssembly.
 - Packages never import applications. Scientific/domain code never imports React.
 

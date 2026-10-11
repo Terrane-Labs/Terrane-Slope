@@ -3,14 +3,24 @@ import type { StereonetPoint } from '@geokinematics/domain';
 // ── Feature representations ─────────────────────────────────────────────────
 
 /**
+ * Semantic classification of a plotted feature, supplied by the caller.
+ * The UI renders it with a non-hue-only encoding (fill and outline) and does not
+ * compute it.
+ */
+export type StereonetStatus = 'admissible' | 'rejected';
+
+/**
  * A plane pole to display on the stereonet.
  * The `id` uniquely identifies the feature for selection and hover callbacks.
  * The `point` is the pre-projected stereonet coordinate produced by
  * \`@geokinematics/geometry\`.
+ * The optional `status` marks the pole as admissible or rejected under the active
+ * analysis. When absent, the pole uses the neutral marker style.
  */
 export interface StereonetPole {
   id: string;
   point: StereonetPoint;
+  status?: StereonetStatus;
 }
 
 /**
@@ -33,6 +43,32 @@ export interface StereonetLineation {
 export interface StereonetGreatCircle {
   id: string;
   points: StereonetPoint[];
+}
+
+// ── Overlays ────────────────────────────────────────────────────────────────
+
+/**
+ * A filled region drawn beneath the stereonet features, such as an admissible zone.
+ * `rings` are closed outlines in stereonet coordinates without a repeated closing
+ * point, filled with the even-odd rule. `label` is a human-readable name used for
+ * the accessible title. Overlays do not take part in hit-testing or selection.
+ */
+export interface StereonetOverlayRegion {
+  id: string;
+  label: string;
+  rings: ReadonlyArray<ReadonlyArray<StereonetPoint>>;
+}
+
+/**
+ * A boundary curve drawn beneath the stereonet features.
+ * `dashed` marks a boundary that is excluded from the region it bounds.
+ * Overlays do not take part in hit-testing or selection.
+ */
+export interface StereonetOverlayCurve {
+  id: string;
+  label: string;
+  points: ReadonlyArray<StereonetPoint>;
+  dashed: boolean;
 }
 
 // ── Unified feature type ────────────────────────────────────────────────────

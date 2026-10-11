@@ -1,3 +1,16 @@
+import path from 'node:path';
 import { defineConfig } from 'vitest/config';
 
-export default defineConfig({ test: { environment: 'node', include: ['src/**/*.test.ts'] } });
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@geokinematics/domain': path.resolve(__dirname, '../../packages/domain/src/index.ts'),
+      '@geokinematics/geometry': path.resolve(__dirname, '../../packages/geometry/src/index.ts'),
+      '@geokinematics/kinematics': path.resolve(
+        __dirname,
+        '../../packages/kinematics/src/index.ts',
+      ),
+    },
+  },
+  test: { environment: 'node', include: ['src/**/*.test.ts'] },
+});

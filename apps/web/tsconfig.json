@@ -13,6 +13,7 @@
       "@geokinematics/wasm-core": ["src/lib/wasm/generated/geokinematics_core"],
       "@geokinematics/domain": ["../../packages/domain/src/index.ts"],
       "@geokinematics/geometry": ["../../packages/geometry/src/index.ts"],
+      "@geokinematics/kinematics": ["../../packages/kinematics/src/index.ts"],
       "@geokinematics/ui": ["../../packages/ui/src/index.ts"]
     },
     "allowJs": true,

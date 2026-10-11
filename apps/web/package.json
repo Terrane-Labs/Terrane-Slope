@@ -13,6 +13,7 @@
   "dependencies": {
     "@geokinematics/domain": "workspace:*",
     "@geokinematics/geometry": "workspace:*",
+    "@geokinematics/kinematics": "workspace:*",
     "@geokinematics/ui": "workspace:*",
     "next": "^15.5.2",
     "react": "^19.1.1",

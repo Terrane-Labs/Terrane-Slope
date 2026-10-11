@@ -6,8 +6,11 @@ export type {
   StereonetFeature,
   StereonetGreatCircle,
   StereonetLineation,
+  StereonetOverlayCurve,
+  StereonetOverlayRegion,
   StereonetPole,
   StereonetSelection,
+  StereonetStatus,
 } from './stereonet-types';
 
 export { StereonetInspectorPanel } from './StereonetInspectorPanel';

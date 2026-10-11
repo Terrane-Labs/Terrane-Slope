@@ -6,6 +6,8 @@ import type {
   StereonetFeature,
   StereonetGreatCircle,
   StereonetLineation,
+  StereonetOverlayCurve,
+  StereonetOverlayRegion,
   StereonetPole,
   StereonetSelection,
 } from './stereonet-types';
@@ -31,6 +33,15 @@ export interface StereonetProps {
    * an ordered array of StereonetPoint values defining one great-circle trace.
    */
   greatCircles?: StereonetGreatCircle[];
+  /**
+   * Pre-projected filled regions drawn beneath all features (for example an
+   * admissible zone). Not interactive.
+   */
+  overlayRegions?: ReadonlyArray<StereonetOverlayRegion>;
+  /**
+   * Pre-projected boundary curves drawn beneath all features. Not interactive.
+   */
+  overlayCurves?: ReadonlyArray<StereonetOverlayCurve>;
 
   // ── Interaction contract ────────────────────────────────────────────────
 
@@ -68,6 +79,30 @@ export const POINT_HIT_RADIUS_SVG = 8;
 
 /** Interaction hit-testing radius in SVG units for great-circle paths. */
 export const GREAT_CIRCLE_HIT_RADIUS_SVG = 6;
+
+// ── Marker and overlay styles ───────────────────────────────────────────────
+
+interface PoleStyle {
+  fill: string;
+  stroke: string;
+  strokeWidth: number;
+}
+
+/** Neutral pole marker, used when no status is supplied. */
+const NEUTRAL_POLE_STYLE: PoleStyle = { fill: '#15803d', stroke: '#fff', strokeWidth: 0.75 };
+
+/**
+ * Status styles. Admissible poles are filled with a heavy dark outline; rejected
+ * poles are hollow with a thin grey outline. The fill/hollow difference carries the
+ * status for viewers who cannot distinguish the hues.
+ */
+const POLE_STATUS_STYLE: Record<'admissible' | 'rejected', PoleStyle> = {
+  admissible: { fill: '#009e73', stroke: '#064e3b', strokeWidth: 1.75 },
+  rejected: { fill: '#ffffff', stroke: '#6b7280', strokeWidth: 1.25 },
+};
+
+const OVERLAY_ADMISSIBLE_FILL = 'rgba(0, 158, 115, 0.18)';
+const OVERLAY_BOUNDARY_STROKE = '#0f766e';
 
 /**
  * Applies the visualization-only linear transform from stereonet coordinates
@@ -219,6 +254,8 @@ export function Stereonet({
   lineations = [],
   poles = [],
   greatCircles = [],
+  overlayRegions = [],
+  overlayCurves = [],
   selection = null,
   onSelectionChange,
   onHover,
@@ -441,21 +478,80 @@ export function Stereonet({
     const pt = toSvg(pole.point, center, radius);
     const half = 4;
     const isSelected = isFeatureSelected({ type: 'pole', id: pole.id }, selection);
+    const style = pole.status === undefined ? NEUTRAL_POLE_STYLE : POLE_STATUS_STYLE[pole.status];
     return (
       <rect
         key={pole.id}
         data-id={pole.id}
         data-type="pole"
+        data-status={pole.status}
         data-selected={isSelected ? 'true' : undefined}
         aria-selected={isSelected ? true : undefined}
         x={fmt(pt.x - half)}
         y={fmt(pt.y - half)}
         width={half * 2}
         height={half * 2}
-        fill="#15803d"
-        stroke={isSelected ? '#f59e0b' : '#fff'}
-        strokeWidth={isSelected ? 2.5 : 0.75}
-      />
+        fill={style.fill}
+        stroke={isSelected ? '#f59e0b' : style.stroke}
+        strokeWidth={isSelected ? 2.5 : style.strokeWidth}
+      >
+        {pole.status !== undefined && (
+          <title>{pole.status === 'admissible' ? 'Admissible' : 'Rejected'}</title>
+        )}
+      </rect>
+    );
+  });
+
+  // ── Overlay layers ───────────────────────────────────────────────────────────
+  // Regions and boundary curves are drawn beneath features and ignore pointer
+  // events, so hit-testing and selection are unaffected.
+
+  const ringPath = (ring: ReadonlyArray<StereonetPoint>): string =>
+    ring
+      .map((p, j) => {
+        const pt = toSvg(p, center, radius);
+        return `${j === 0 ? 'M' : 'L'} ${fmt(pt.x)} ${fmt(pt.y)}`;
+      })
+      .join(' ') + ' Z';
+
+  const overlayRegionPaths = overlayRegions.map((region) => (
+    <path
+      key={region.id}
+      data-id={region.id}
+      data-type="overlayRegion"
+      d={region.rings.map(ringPath).join(' ')}
+      fill={OVERLAY_ADMISSIBLE_FILL}
+      fillRule="evenodd"
+      stroke="none"
+      pointerEvents="none"
+    >
+      <title>{region.label}</title>
+    </path>
+  ));
+
+  const overlayCurvePaths = overlayCurves.map((curve) => {
+    if (curve.points.length === 0) return null;
+    const d = curve.points
+      .map((p, j) => {
+        const pt = toSvg(p, center, radius);
+        return `${j === 0 ? 'M' : 'L'} ${fmt(pt.x)} ${fmt(pt.y)}`;
+      })
+      .join(' ');
+    return (
+      <path
+        key={curve.id}
+        data-id={curve.id}
+        data-type="overlayCurve"
+        data-dashed={curve.dashed ? 'true' : undefined}
+        d={d}
+        fill="none"
+        stroke={OVERLAY_BOUNDARY_STROKE}
+        strokeWidth={1.5}
+        strokeDasharray={curve.dashed ? '5 4' : undefined}
+        pointerEvents="none"
+      >
+        <title>{curve.label}</title>
+      </path>
     );
   });
 
@@ -489,6 +585,10 @@ export function Stereonet({
 
       {/* Wulff grid */}
       {showGrid && <g data-testid="stereonet-grid">{gridLines}</g>}
+
+      {/* Overlay regions and boundary curves (non-interactive) */}
+      <g data-testid="overlay-regions">{overlayRegionPaths}</g>
+      <g data-testid="overlay-curves">{overlayCurvePaths}</g>
 
       {/* Great circle paths */}
       <g data-testid="great-circles">{gcPaths}</g>

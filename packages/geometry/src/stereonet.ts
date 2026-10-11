@@ -202,3 +202,117 @@ export function projectSmallCircle(
 
   return points;
 }
+
+/**
+ * Generates points tracing an arc of the small-circle projection of a constant plunge.
+ *
+ * The arc runs clockwise (increasing trend) from `startTrend` to `endTrend`.
+ * Trends are interpreted as continuous values, so an arc may cross 0°/360°
+ * (for example `startTrend = 350`, `endTrend = 370`).
+ *
+ * @param plunge     Constant plunge in decimal degrees [0°, 90°].
+ * @param startTrend Trend of the first point, any finite value.
+ * @param endTrend   Trend of the last point. `endTrend - startTrend` must lie in [0°, 360°].
+ * @param segments   Number of angular subdivisions. Must be a positive integer.
+ * @returns `segments + 1` points. The first and last point coincide when the sweep is 360°.
+ * @throws {RangeError} for non-finite values, plunge outside [0°, 90°], a sweep outside
+ *   [0°, 360°], or a non-positive-integer `segments`.
+ */
+export function projectSmallCircleArc(
+  plunge: Degrees,
+  startTrend: Degrees,
+  endTrend: Degrees,
+  segments: number,
+): readonly StereonetPoint[] {
+  assertFinite(plunge, 'Plunge');
+  assertFinite(startTrend, 'Start trend');
+  assertFinite(endTrend, 'End trend');
+  if (plunge < 0 || plunge > 90) {
+    throw new RangeError('Plunge must be within [0°, 90°].');
+  }
+  const sweep = endTrend - startTrend;
+  if (sweep < 0 || sweep > 360) {
+    throw new RangeError('Arc sweep must be within [0°, 360°].');
+  }
+  if (!Number.isInteger(segments) || segments < 1) {
+    throw new RangeError('Segments must be a positive integer.');
+  }
+
+  const points: StereonetPoint[] = [];
+  for (let i = 0; i <= segments; i++) {
+    const trend = startTrend + (sweep * i) / segments;
+    points.push(projectLine({ trend, plunge }));
+  }
+  return points;
+}
+
+/**
+ * Builds the closed outline(s) of the region of line orientations whose plunge lies
+ * between `minPlunge` and `maxPlunge` and whose trend lies within
+ * `±halfWidth` of `centerTrend`, projected on the Wulff net.
+ *
+ * Constant-trend edges are straight radial segments on the equal-angle net; constant-plunge
+ * edges are small-circle arcs sampled with `arcStepDeg` resolution. Rings are returned
+ * without a repeated closing point and are intended for even-odd filling:
+ *
+ * - `minPlunge >= maxPlunge`: empty region, returns `[]`.
+ * - `halfWidth >= 180`: full annulus — an outer ring, plus an inner ring unless
+ *   `maxPlunge === 90` (the inner boundary collapses to the net centre).
+ * - otherwise: one ring (outer arc, then inner arc in reverse). When `maxPlunge === 90`
+ *   the inner arc collapses to the net centre and contributes a single vertex.
+ *
+ * Whether a boundary belongs to the region is the caller's decision; this function
+ * produces geometry only.
+ *
+ * @param minPlunge   Smaller plunge bound (outer edge, nearer the rim) in [0°, 90°].
+ * @param maxPlunge   Larger plunge bound (inner edge, nearer the centre) in [0°, 90°].
+ * @param centerTrend Trend at the middle of the sector, any finite value.
+ * @param halfWidth   Sector half-width in degrees, in (0°, 360°].
+ * @param arcStepDeg  Maximum angular step along arcs, in (0°, 90°]. Default 1°.
+ * @throws {RangeError} for non-finite values or arguments outside the stated ranges.
+ */
+export function projectLineSectorRings(
+  minPlunge: Degrees,
+  maxPlunge: Degrees,
+  centerTrend: Degrees,
+  halfWidth: Degrees,
+  arcStepDeg: Degrees = 1,
+): readonly (readonly StereonetPoint[])[] {
+  assertFinite(minPlunge, 'Minimum plunge');
+  assertFinite(maxPlunge, 'Maximum plunge');
+  assertFinite(centerTrend, 'Center trend');
+  assertFinite(halfWidth, 'Half-width');
+  assertFinite(arcStepDeg, 'Arc step');
+  if (minPlunge < 0 || minPlunge > 90 || maxPlunge < 0 || maxPlunge > 90) {
+    throw new RangeError('Plunge bounds must be within [0°, 90°].');
+  }
+  if (halfWidth <= 0 || halfWidth > 360) {
+    throw new RangeError('Half-width must be within (0°, 360°].');
+  }
+  if (arcStepDeg <= 0 || arcStepDeg > 90) {
+    throw new RangeError('Arc step must be within (0°, 90°].');
+  }
+  if (minPlunge >= maxPlunge) return [];
+
+  const innerCollapsed = maxPlunge === 90;
+
+  if (halfWidth >= 180) {
+    const segments = Math.ceil(360 / arcStepDeg);
+    const outer = projectSmallCircleArc(minPlunge, 0, 360, segments).slice(0, -1);
+    if (innerCollapsed) return [outer];
+    const inner = projectSmallCircleArc(maxPlunge, 0, 360, segments).slice(0, -1);
+    return [outer, inner];
+  }
+
+  const start = centerTrend - halfWidth;
+  const end = centerTrend + halfWidth;
+  const segments = Math.max(1, Math.ceil((2 * halfWidth) / arcStepDeg));
+  const outerArc = projectSmallCircleArc(minPlunge, start, end, segments);
+  const ring: StereonetPoint[] = [...outerArc];
+  if (innerCollapsed) {
+    ring.push(projectLine({ trend: centerTrend, plunge: 90 }));
+  } else {
+    ring.push(...projectSmallCircleArc(maxPlunge, start, end, segments).slice().reverse());
+  }
+  return [ring];
+}
