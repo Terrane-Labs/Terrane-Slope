@@ -39,7 +39,7 @@
     "verify": "pnpm format:check && pnpm wasm:build && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm test:e2e && pnpm rust:test && pnpm rust:format:check && pnpm rust:lint"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/eslintrc": "^3.3.7",
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.3.0",
     "eslint": "^9.34.0",
