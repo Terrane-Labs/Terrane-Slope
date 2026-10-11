@@ -1,31 +1,22 @@
 <div align="center">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="docs/assets/logo/GeoKinematics-3D-vector-dark.svg"
-    />
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="docs/assets/logo/GeoKinematics-3D-vector.svg"
-    />
-    <img
-      src="docs/assets/logo/GeoKinematics-3D-vector.svg"
-      alt="GeoKinematics-3D"
-      width="550"
-    />
-  </picture>
+  <img
+    src="docs/assets/brand/terrane-slope-icon.svg"
+    alt="Terrane Slope icon"
+    width="120"
+  />
+  <h1>Terrane Slope</h1>
+  <p>Rock-slope kinematic analysis, built on strict geological conventions.</p>
+  <p><sub>A <strong>Terrane Labs</strong> project</sub></p>
 </div>
-
-# GeoKinematics-3D
 
 [![CI](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml/badge.svg)](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Stage](https://img.shields.io/badge/Stage-Phase%202A.2%20Complete-green.svg)](#roadmap)
+[![Stage](https://img.shields.io/badge/Stage-Phase%202A.3%20Complete-green.svg)](#roadmap)
 [![RepoGrade](https://www.repo-grade.com/api/badge/nabielnovelkhubran/geokinematics-3d)](https://www.repo-grade.com/report/nabielnovelkhubran/geokinematics-3d)
 
 Browser-based software for rock-slope kinematic analysis, combining geological geometry, stereonet mathematics, 3D visualization, and Rust/WASM computation.
 
-> **Status:** Phase 1 complete · Phase 2A.2 complete
+> **Status:** Phase 1 complete · Phase 2A.3 complete
 
 ## Current state
 
@@ -48,7 +39,7 @@ Implemented:
 
 The kinematic evaluators are pure deterministic functions with no React, DOM, or browser dependencies. They live in `packages/kinematics` and are independently testable.
 
-Slope configuration UI and stereonet overlay of kinematic envelopes are not implemented yet.
+Planar sliding and direct toppling zones are drawn on the stereonet, and plane poles are colored by admissibility. The wedge overlay and a full slope configuration UI are not implemented yet.
 
 ## Roadmap
 
@@ -71,7 +62,7 @@ Slope configuration UI and stereonet overlay of kinematic envelopes are not impl
 
 ### Coordinate system
 
-GeoKinematics-3D uses a right-handed East-North-Up coordinate system:
+Terrane Slope uses a right-handed East-North-Up coordinate system:
 
 ```text
 +X = East
@@ -158,7 +149,7 @@ docs/decisions/ADR-008-stereonet-projection.md
 The repository is organized as a pnpm workspace with separate application, domain, geometry, UI, and Rust packages.
 
 ```text
-GeoKinematics-3D/
+terrane-slope/
 │
 ├── apps/
 │   └── web/                  # Next.js application
@@ -380,6 +371,7 @@ docs/decisions/ADR-008-stereonet-projection.md
 - [x] Wedge sliding evaluator (Phase 2A.2)
 - [x] Direct toppling evaluator (Phase 2A.2)
 - [x] Kinematic admissibility with strict boundary conditions (Phase 2A.2)
+- [x] Planar sliding and direct toppling zone overlays (Phase 2A.3)
 - [ ] Friction-angle constraints & daylight envelope visualization (Phase 2A.3+)
 - [ ] Critical-plane identification (Phase 2A.3+)
 
@@ -438,6 +430,13 @@ Apache License 2.0. See [LICENSE](LICENSE) for terms.
 
 ## Project status
 
-GeoKinematics-3D is under active development.
+Terrane Slope is under active development.
 
 The current release contains the project's geometry and stereonet foundations. It is **not yet a complete rock-slope analysis application** and should not be used as a production geotechnical analysis tool.
+
+---
+
+<p>
+  <img src="docs/assets/brand/terrane-labs-icon.svg" alt="Terrane Labs icon" width="32" align="left" />
+  Terrane Slope is developed by Terrane Labs.
+</p>

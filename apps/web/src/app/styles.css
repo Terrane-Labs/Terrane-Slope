@@ -1,5 +1,9 @@
 :root {
   color-scheme: dark;
+  --terrane-accent: #ff5a2b;
+  --terrane-bg: #0a0e14;
+  --terrane-text: #ffffff;
+  --terrane-muted: #8a94a6;
   font-family: Arial, sans-serif;
 }
 * {
@@ -7,8 +11,8 @@
 }
 body {
   margin: 0;
-  background: #101820;
-  color: #eaf2f8;
+  background: var(--terrane-bg);
+  color: var(--terrane-text);
 }
 main {
   max-width: 960px;
@@ -19,7 +23,7 @@ main {
   display: block;
   width: 100%;
   height: 420px;
-  border: 1px solid #3e586b;
+  border: 1px solid var(--terrane-muted);
   border-radius: 8px;
   background: #172a38;
 }

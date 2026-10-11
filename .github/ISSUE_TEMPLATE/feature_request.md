@@ -1,6 +1,6 @@
 ﻿---
 name: Feature Request
-about: Suggest an idea, algorithm, or visualization enhancement for GeoKinematics-3D
+about: Suggest an idea, algorithm, or visualization enhancement for Terrane Slope
 title: '[Feature]: '
 labels: ['enhancement']
 assignees: []
