@@ -15,7 +15,7 @@
     "@terrane-labs/geometry": "workspace:*",
     "@terrane-labs/kinematics": "workspace:*",
     "@terrane-labs/ui": "workspace:*",
-    "next": "^15.5.2",
+    "next": "^16.4.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "three": "^0.180.0"
