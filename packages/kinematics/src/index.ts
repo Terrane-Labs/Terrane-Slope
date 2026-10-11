@@ -36,6 +36,10 @@ import {
   planeNormalFromOrientation,
   selectDownwardDirection,
 } from '@geokinematics/geometry';
+import { DEFAULT_PLANAR_AZIMUTH_SECTOR_DEG, DIRECT_TOPPLING_AZIMUTH_SECTOR_DEG } from './constants';
+
+export * from './constants';
+export * from './overlay';
 
 // ── Internal helpers ──────────────────────────────────────────────────────────
 
@@ -89,7 +93,7 @@ export function evaluatePlanarSliding(
   slope: SlopeFace,
   discontinuity: PlaneOrientation,
   frictionAngle: FrictionAngle,
-  azimuthSectorDeg: number = 20,
+  azimuthSectorDeg: number = DEFAULT_PLANAR_AZIMUTH_SECTOR_DEG,
 ): PlanarSlidingResult {
   assertFiniteArgs(
     [slope.dipDirection, 'slope.dipDirection'],
@@ -339,7 +343,9 @@ export function evaluateDirectToppling(
   // Condition 2: anti-parallel dip direction (within ±20°)
   // αd should be approximately (αs + 180°) — the block dips back into the slope
   const antiParallelTarget = normalizeAzimuth(s.dipDirection + 180);
-  if (!azimuthWithinSector(d.dipDirection, antiParallelTarget, 20)) {
+  if (
+    !azimuthWithinSector(d.dipDirection, antiParallelTarget, DIRECT_TOPPLING_AZIMUTH_SECTOR_DEG)
+  ) {
     rejections.push('azimuthSectorFailed');
   }
 

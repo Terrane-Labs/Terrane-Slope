@@ -43,6 +43,9 @@ importers:
       '@geokinematics/geometry':
         specifier: workspace:*
         version: link:../../packages/geometry
+      '@geokinematics/kinematics':
+        specifier: workspace:*
+        version: link:../../packages/kinematics
       '@geokinematics/ui':
         specifier: workspace:*
         version: link:../../packages/ui
