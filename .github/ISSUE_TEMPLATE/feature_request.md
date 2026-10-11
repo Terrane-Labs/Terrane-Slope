@@ -22,11 +22,11 @@ A clear and concise description of what you want to happen.
 
 ## Architectural Layer Impact
 
-- [ ] `@geokinematics/domain` (domain types and orientation interfaces)
-- [ ] `@geokinematics/geometry` (pure coordinate/stereonet geometry)
-- [ ] `@geokinematics/kinematics` (kinematic admissibility analysis)
-- [ ] `@geokinematics/ui` (interactive stereonet/controls UI components)
-- [ ] `geokinematics-core` (Rust / WebAssembly computational engine)
+- [ ] `@terrane-labs/domain` (domain types and orientation interfaces)
+- [ ] `@terrane-labs/geometry` (pure coordinate/stereonet geometry)
+- [ ] `@terrane-labs/kinematics` (kinematic admissibility analysis)
+- [ ] `@terrane-labs/ui` (interactive stereonet/controls UI components)
+- [ ] `terrane-slope-core` (Rust / WebAssembly computational engine)
 - [ ] `apps/web` (Next.js application & workspace)
 
 ## Alternatives Considered

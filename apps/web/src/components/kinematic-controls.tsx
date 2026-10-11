@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { KinematicOverlayMode } from '@geokinematics/kinematics';
+import type { KinematicOverlayMode } from '@terrane-labs/kinematics';
 import type { ParameterInputs } from '../lib/kinematic-view-model';
 import { MODE_LABELS } from '../lib/kinematic-view-model';
 

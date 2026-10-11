@@ -1,11 +1,11 @@
 {
-  "name": "@geokinematics/kinematics",
+  "name": "@terrane-labs/kinematics",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@geokinematics/domain": "workspace:*",
-    "@geokinematics/geometry": "workspace:*"
+    "@terrane-labs/domain": "workspace:*",
+    "@terrane-labs/geometry": "workspace:*"
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",

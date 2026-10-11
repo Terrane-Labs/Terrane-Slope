@@ -4,5 +4,5 @@ test('initializes the rendering shell and calls the Rust/WASM boundary', async (
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'GeoKinematics-3D' })).toBeVisible();
   await expect(page.getByLabel('Three-dimensional rendering canvas')).toBeVisible();
-  await expect(page.getByText('WASM boundary: geokinematics-core:ready')).toBeVisible();
+  await expect(page.getByText('WASM boundary: terrane-slope-core:ready')).toBeVisible();
 });

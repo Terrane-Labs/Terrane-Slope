@@ -4,7 +4,7 @@ import type {
   PlaneOrientation,
   Vector3,
   StereonetPoint,
-} from '@geokinematics/domain';
+} from '@terrane-labs/domain';
 import { CANONICAL_EPSILON } from '../src/tolerance';
 import { vec3IsUnit, vec3Magnitude } from '../src/vector';
 import {

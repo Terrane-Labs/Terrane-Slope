@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { projectPlanePole, projectPlaneGreatCircle, projectLine } from '@geokinematics/geometry';
-import type { PlaneOrientation, LineOrientation } from '@geokinematics/domain';
-import { Stereonet, StereonetInspectorPanel, CursorDisplay } from '@geokinematics/ui';
+import { projectPlanePole, projectPlaneGreatCircle, projectLine } from '@terrane-labs/geometry';
+import type { PlaneOrientation, LineOrientation } from '@terrane-labs/domain';
+import { Stereonet, StereonetInspectorPanel, CursorDisplay } from '@terrane-labs/ui';
 import type {
   StereonetCursor,
   StereonetFeature,
@@ -13,7 +13,7 @@ import type {
   StereonetSelection,
   InspectorEntry,
   InspectorField,
-} from '@geokinematics/ui';
+} from '@terrane-labs/ui';
 import { RenderingShell } from '../components/rendering-shell';
 import { KinematicControls } from '../components/kinematic-controls';
 import type { AnalysisMode } from '../components/kinematic-controls';

@@ -15,7 +15,7 @@ export interface CursorDisplayProps {
  *
  * Renders a stable placeholder when the cursor is null (pointer outside the
  * stereonet). Performs no calculation — `trend` and `plunge` are pre-computed
- * by the Stereonet component via `@geokinematics/geometry`.
+ * by the Stereonet component via `@terrane-labs/geometry`.
  */
 export function CursorDisplay({ cursor }: CursorDisplayProps): React.ReactElement {
   const content =

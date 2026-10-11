@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { KinematicRejectionReason } from '@geokinematics/domain';
+import type { KinematicRejectionReason } from '@terrane-labs/domain';
 import {
   DEFAULT_PARAMETER_STATE,
   REJECTION_LABELS,

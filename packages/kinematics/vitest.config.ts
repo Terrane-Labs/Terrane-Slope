@@ -4,8 +4,8 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@geokinematics/domain': path.resolve(__dirname, '../domain/src/index.ts'),
-      '@geokinematics/geometry': path.resolve(__dirname, '../geometry/src/index.ts'),
+      '@terrane-labs/domain': path.resolve(__dirname, '../domain/src/index.ts'),
+      '@terrane-labs/geometry': path.resolve(__dirname, '../geometry/src/index.ts'),
     },
   },
   test: {

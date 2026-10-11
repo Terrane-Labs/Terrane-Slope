@@ -1,4 +1,4 @@
-import type { StereonetPoint } from '@geokinematics/domain';
+import type { StereonetPoint } from '@terrane-labs/domain';
 
 // ── Feature representations ─────────────────────────────────────────────────
 
@@ -13,7 +13,7 @@ export type StereonetStatus = 'admissible' | 'rejected';
  * A plane pole to display on the stereonet.
  * The `id` uniquely identifies the feature for selection and hover callbacks.
  * The `point` is the pre-projected stereonet coordinate produced by
- * \`@geokinematics/geometry\`.
+ * \`@terrane-labs/geometry\`.
  * The optional `status` marks the pole as admissible or rejected under the active
  * analysis. When absent, the pole uses the neutral marker style.
  */
@@ -27,7 +27,7 @@ export interface StereonetPole {
  * A lineation to display on the stereonet.
  * The `id` uniquely identifies the feature for selection and hover callbacks.
  * The `point` is the pre-projected stereonet coordinate produced by
- * \`@geokinematics/geometry\`.
+ * \`@terrane-labs/geometry\`.
  */
 export interface StereonetLineation {
   id: string;
@@ -38,7 +38,7 @@ export interface StereonetLineation {
  * A great-circle trace to display on the stereonet.
  * The `id` uniquely identifies the feature for selection and hover callbacks.
  * The `points` are an ordered array of pre-projected stereonet coordinates
- * produced by \`@geokinematics/geometry\`.
+ * produced by \`@terrane-labs/geometry\`.
  */
 export interface StereonetGreatCircle {
   id: string;
@@ -113,7 +113,7 @@ export type StereonetSelection = StereonetFeature;
  *
  * `trend` and `plunge` are the geological orientation corresponding to that
  * position, derived via the inverse Wulff projection implemented in
- * \`@geokinematics/geometry\`. The UI layer does not perform this calculation.
+ * \`@terrane-labs/geometry\`. The UI layer does not perform this calculation.
  *
  * `null` is emitted when the pointer leaves the stereonet boundary.
  */

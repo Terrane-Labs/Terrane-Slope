@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import type { StereonetPoint } from '@geokinematics/domain';
+import type { StereonetPoint } from '@terrane-labs/domain';
 import { projectLine, projectLineSectorRings, projectSmallCircleArc } from '../src/stereonet';
 
 const radius = (p: StereonetPoint): number => Math.hypot(p.x, p.y);

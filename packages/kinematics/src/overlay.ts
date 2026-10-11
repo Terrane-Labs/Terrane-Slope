@@ -19,16 +19,16 @@
  * strict inequalities in the evaluators, except the rim of the toppling zone
  * (dip = 90° satisfies the toppling steepness condition).
  *
- * Imports only @geokinematics/geometry and @geokinematics/domain.
+ * Imports only @terrane-labs/geometry and @terrane-labs/domain.
  */
 
-import type { Degrees, FrictionAngle, SlopeFace, StereonetPoint } from '@geokinematics/domain';
+import type { Degrees, FrictionAngle, SlopeFace, StereonetPoint } from '@terrane-labs/domain';
 import {
   normalizeAzimuth,
   projectLine,
   projectLineSectorRings,
   projectSmallCircle,
-} from '@geokinematics/geometry';
+} from '@terrane-labs/geometry';
 import { DEFAULT_PLANAR_AZIMUTH_SECTOR_DEG, DIRECT_TOPPLING_AZIMUTH_SECTOR_DEG } from './constants';
 
 /** Maximum angular step (degrees) used when sampling arcs and circles. */

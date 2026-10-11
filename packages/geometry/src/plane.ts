@@ -1,4 +1,4 @@
-import type { Degrees, PlaneOrientation, Vector3 } from '@geokinematics/domain';
+import type { Degrees, PlaneOrientation, Vector3 } from '@terrane-labs/domain';
 import { degreesToRadians, normalizeAzimuth, radiansToDegrees } from './angle';
 import { CANONICAL_EPSILON } from './tolerance';
 import {

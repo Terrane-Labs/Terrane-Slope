@@ -4,8 +4,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@geokinematics/domain": ["../domain/src/index.ts"],
-      "@geokinematics/geometry": ["../geometry/src/index.ts"]
+      "@terrane-labs/domain": ["../domain/src/index.ts"],
+      "@terrane-labs/geometry": ["../geometry/src/index.ts"]
     }
   },
   "include": ["src", "test"]
