@@ -21,5 +21,5 @@ The project began as GeoKinematics-3D. It now ships under the product name Terra
 
 - Earlier ADRs keep their original wording. ADR-003 refers to `geokinematics-core` and ADR-009 refers to `@geokinematics/kinematics`; those names map to `terrane-slope-core` and `@terrane-labs/kinematics`.
 - No scientific behavior, coordinate convention, or tolerance changed.
-- Repository metadata (`package.json` `homepage` and `repository`, `Cargo.toml` `repository`), the README CI and RepoGrade badges, and the clone instructions in `CONTRIBUTING.md` still point at `nabielnovelkhubran/GeoKinematics-3D`. They change after the GitHub-side transfer and rename, which is a separate operation.
+- The repository moved from `nabielnovelkhubran/GeoKinematics-3D` to `Terrane-Labs/Terrane-Slope`. A follow-up commit updated `package.json` (`homepage`, `repository`), `Cargo.toml` (`repository`), the README CI badge, and the `CONTRIBUTING.md` clone instructions. The README RepoGrade badge was removed because RepoGrade reports the new repository as not graded.
 - No shared core or second product package exists yet. A shared computational-geoscience core remains an Architectural Direction.

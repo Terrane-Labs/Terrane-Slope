@@ -4,10 +4,10 @@
   "private": true,
   "packageManager": "pnpm@11.16.0",
   "description": "Deterministic computational platform for rock-slope kinematic analysis, combining geological geometry, stereonet projection, 3D visualization, and Rust/WASM algorithms.",
-  "homepage": "https://github.com/nabielnovelkhubran/GeoKinematics-3D#readme",
+  "homepage": "https://github.com/Terrane-Labs/Terrane-Slope#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nabielnovelkhubran/GeoKinematics-3D.git"
+    "url": "git+https://github.com/Terrane-Labs/Terrane-Slope.git"
   },
   "keywords": [
     "geotechnical-engineering",

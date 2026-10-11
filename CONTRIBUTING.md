@@ -33,8 +33,8 @@ Ensure you have the following tools installed on your development machine:
 1. Clone your fork of the repository:
 
    ```sh
-   git clone https://github.com/<your-username>/GeoKinematics-3D.git
-   cd GeoKinematics-3D
+   git clone https://github.com/<your-username>/Terrane-Slope.git
+   cd Terrane-Slope
    ```
 
 2. Install all workspace dependencies:

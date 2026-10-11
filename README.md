@@ -9,10 +9,9 @@
   <p><sub>A <strong>Terrane Labs</strong> project</sub></p>
 </div>
 
-[![CI](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml/badge.svg)](https://github.com/nabielnovelkhubran/GeoKinematics-3D/actions/workflows/ci.yml)
+[![CI](https://github.com/Terrane-Labs/Terrane-Slope/actions/workflows/ci.yml/badge.svg)](https://github.com/Terrane-Labs/Terrane-Slope/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Stage](https://img.shields.io/badge/Stage-Phase%202A.3%20Complete-green.svg)](#roadmap)
-[![RepoGrade](https://www.repo-grade.com/api/badge/nabielnovelkhubran/geokinematics-3d)](https://www.repo-grade.com/report/nabielnovelkhubran/geokinematics-3d)
 
 Browser-based software for rock-slope kinematic analysis, combining geological geometry, stereonet mathematics, 3D visualization, and Rust/WASM computation.
 
@@ -149,7 +148,7 @@ docs/decisions/ADR-008-stereonet-projection.md
 The repository is organized as a pnpm workspace with separate application, domain, geometry, UI, and Rust packages.
 
 ```text
-terrane-slope/
+Terrane-Slope/
 │
 ├── apps/
 │   └── web/                  # Next.js application
