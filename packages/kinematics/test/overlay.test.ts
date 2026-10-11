@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { PlaneOrientation, SlopeFace, StereonetPoint } from '@geokinematics/domain';
-import { normalizeAzimuth, projectPlanePole } from '@geokinematics/geometry';
+import type { PlaneOrientation, SlopeFace, StereonetPoint } from '@terrane-labs/domain';
+import { normalizeAzimuth, projectPlanePole } from '@terrane-labs/geometry';
 import {
   DEFAULT_PLANAR_AZIMUTH_SECTOR_DEG,
   DIRECT_TOPPLING_AZIMUTH_SECTOR_DEG,

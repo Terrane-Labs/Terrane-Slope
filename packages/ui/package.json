@@ -1,5 +1,5 @@
 {
-  "name": "@geokinematics/ui",
+  "name": "@terrane-labs/ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "jsdom": "^30.0.1"
   },
   "dependencies": {
-    "@geokinematics/domain": "workspace:*",
-    "@geokinematics/geometry": "workspace:*"
+    "@terrane-labs/domain": "workspace:*",
+    "@terrane-labs/geometry": "workspace:*"
   }
 }

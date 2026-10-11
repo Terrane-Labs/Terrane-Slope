@@ -170,7 +170,7 @@ GeoKinematics-3D/
 │   └── ui/                   # React visualization components
 │
 ├── crates/
-│   └── geokinematics-core/   # Rust/WASM computation
+│   └── terrane-slope-core/   # Rust/WASM computation
 │
 └── docs/
     └── decisions/            # Architecture Decision Records
@@ -266,7 +266,7 @@ pnpm test
 For the UI package:
 
 ```bash
-pnpm --filter @geokinematics/ui test
+pnpm --filter @terrane-labs/ui test
 ```
 
 The stereonet geometry tests cover projection, inverse projection, poles, great circles, orientation conversion, and boundary cases.

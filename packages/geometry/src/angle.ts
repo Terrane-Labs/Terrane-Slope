@@ -1,4 +1,4 @@
-import type { Degrees, Radians } from '@geokinematics/domain';
+import type { Degrees, Radians } from '@terrane-labs/domain';
 
 const FULL_CIRCLE_DEGREES = 360;
 

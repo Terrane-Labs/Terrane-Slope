@@ -37,16 +37,16 @@ importers:
 
   apps/web:
     dependencies:
-      '@geokinematics/domain':
+      '@terrane-labs/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@geokinematics/geometry':
+      '@terrane-labs/geometry':
         specifier: workspace:*
         version: link:../../packages/geometry
-      '@geokinematics/kinematics':
+      '@terrane-labs/kinematics':
         specifier: workspace:*
         version: link:../../packages/kinematics
-      '@geokinematics/ui':
+      '@terrane-labs/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
@@ -76,16 +76,16 @@ importers:
 
   packages/geometry:
     dependencies:
-      '@geokinematics/domain':
+      '@terrane-labs/domain':
         specifier: workspace:*
         version: link:../domain
 
   packages/kinematics:
     dependencies:
-      '@geokinematics/domain':
+      '@terrane-labs/domain':
         specifier: workspace:*
         version: link:../domain
-      '@geokinematics/geometry':
+      '@terrane-labs/geometry':
         specifier: workspace:*
         version: link:../geometry
 
@@ -95,10 +95,10 @@ importers:
 
   packages/ui:
     dependencies:
-      '@geokinematics/domain':
+      '@terrane-labs/domain':
         specifier: workspace:*
         version: link:../domain
-      '@geokinematics/geometry':
+      '@terrane-labs/geometry':
         specifier: workspace:*
         version: link:../geometry
       react:

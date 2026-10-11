@@ -1,4 +1,4 @@
-import type { Radians, Vector3 } from '@geokinematics/domain';
+import type { Radians, Vector3 } from '@terrane-labs/domain';
 import { CANONICAL_EPSILON } from './tolerance';
 
 /** Right-handed East-North-Up basis for all Phase 1 geometry. */

@@ -1,4 +1,4 @@
-import type { Degrees } from '@geokinematics/domain';
+import type { Degrees } from '@terrane-labs/domain';
 
 /** Numerical tolerance used by deterministic normal canonicalization. */
 export const CANONICAL_EPSILON = 1e-12;

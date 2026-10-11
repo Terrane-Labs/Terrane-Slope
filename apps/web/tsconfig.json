@@ -10,11 +10,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@geokinematics/wasm-core": ["src/lib/wasm/generated/geokinematics_core"],
-      "@geokinematics/domain": ["../../packages/domain/src/index.ts"],
-      "@geokinematics/geometry": ["../../packages/geometry/src/index.ts"],
-      "@geokinematics/kinematics": ["../../packages/kinematics/src/index.ts"],
-      "@geokinematics/ui": ["../../packages/ui/src/index.ts"]
+      "@terrane-labs/slope-wasm-core": ["src/lib/wasm/generated/terrane_slope_core"],
+      "@terrane-labs/domain": ["../../packages/domain/src/index.ts"],
+      "@terrane-labs/geometry": ["../../packages/geometry/src/index.ts"],
+      "@terrane-labs/kinematics": ["../../packages/kinematics/src/index.ts"],
+      "@terrane-labs/ui": ["../../packages/ui/src/index.ts"]
     },
     "allowJs": true,
     "isolatedModules": true

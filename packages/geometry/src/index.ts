@@ -1,4 +1,4 @@
-// Re-export barrel for @geokinematics/geometry.
+// Re-export barrel for @terrane-labs/geometry.
 // All symbols retain their original names for full backward compatibility.
 export * from './tolerance';
 export * from './angle';

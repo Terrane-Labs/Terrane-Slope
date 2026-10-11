@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@geokinematics/domain": ["../domain/src/index.ts"]
+      "@terrane-labs/domain": ["../domain/src/index.ts"]
     }
   },
   "include": ["src", "test"]

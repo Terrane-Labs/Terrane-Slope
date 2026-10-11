@@ -1,6 +1,6 @@
 import React from 'react';
-import type { StereonetPoint } from '@geokinematics/domain';
-import { unprojectLine } from '@geokinematics/geometry';
+import type { StereonetPoint } from '@terrane-labs/domain';
+import { unprojectLine } from '@terrane-labs/geometry';
 import type {
   StereonetCursor,
   StereonetFeature,
@@ -66,7 +66,7 @@ export interface StereonetProps {
   /**
    * Called as the pointer moves across the stereonet surface.
    * Receives the current normalized stereonet coordinate and its geological
-   * orientation (via inverse Wulff projection in `@geokinematics/geometry`),
+   * orientation (via inverse Wulff projection in `@terrane-labs/geometry`),
    * or `null` when the pointer leaves the stereonet boundary.
    */
   onCursorMove?: (cursor: StereonetCursor | null) => void;
@@ -243,7 +243,7 @@ function getSvgCoordinates(
  * Reusable SVG stereonet visualization component.
  *
  * Accepts already-projected StereonetPoint data (produced by
- * @geokinematics/geometry) and renders them onto an equal-angle Wulff net.
+ * @terrane-labs/geometry) and renders them onto an equal-angle Wulff net.
  * No projection mathematics are performed here.
  */
 export function Stereonet({

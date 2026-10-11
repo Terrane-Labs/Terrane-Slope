@@ -1,7 +1,7 @@
 /**
  * Presentation view-model for the kinematic stereonet overlays.
  *
- * This module maps domain results from `@geokinematics/kinematics` to display
+ * This module maps domain results from `@terrane-labs/kinematics` to display
  * vocabulary (labels, pole status, inspector fields, overlay layers). It performs
  * no scientific computation: admissibility comes from the evaluators and zone
  * geometry from the overlay builders. Parsing and range checks of user input are
@@ -9,20 +9,20 @@
  * overlay builder, which throws `RangeError`.
  */
 
-import type { KinematicRejectionReason, PlaneOrientation, SlopeFace } from '@geokinematics/domain';
+import type { KinematicRejectionReason, PlaneOrientation, SlopeFace } from '@terrane-labs/domain';
 import {
   buildKinematicOverlay,
   evaluateDirectToppling,
   evaluatePlanarSliding,
   type KinematicOverlayMode,
   type KinematicOverlayRole,
-} from '@geokinematics/kinematics';
+} from '@terrane-labs/kinematics';
 import type {
   InspectorField,
   StereonetOverlayCurve,
   StereonetOverlayRegion,
   StereonetStatus,
-} from '@geokinematics/ui';
+} from '@terrane-labs/ui';
 
 // ── Labels ────────────────────────────────────────────────────────────────────
 

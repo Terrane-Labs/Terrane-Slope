@@ -1,5 +1,5 @@
 {
-  "name": "@geokinematics/web",
+  "name": "@terrane-labs/slope-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,10 +11,10 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@geokinematics/domain": "workspace:*",
-    "@geokinematics/geometry": "workspace:*",
-    "@geokinematics/kinematics": "workspace:*",
-    "@geokinematics/ui": "workspace:*",
+    "@terrane-labs/domain": "workspace:*",
+    "@terrane-labs/geometry": "workspace:*",
+    "@terrane-labs/kinematics": "workspace:*",
+    "@terrane-labs/ui": "workspace:*",
     "next": "^15.5.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

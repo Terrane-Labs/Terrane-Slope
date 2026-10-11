@@ -10,7 +10,7 @@
  * NOT admissible).  KINEMATIC_ANGULAR_TOLERANCE guards numerical edge cases at
  * the boundary without introducing an engineering tolerance.
  *
- * Imports only @geokinematics/geometry and @geokinematics/domain.
+ * Imports only @terrane-labs/geometry and @terrane-labs/domain.
  * Zero React / browser dependencies.
  */
 
@@ -24,7 +24,7 @@ import type {
   PlanarSlidingResult,
   SlopeFace,
   WedgeSlidingResult,
-} from '@geokinematics/domain';
+} from '@terrane-labs/domain';
 import {
   CANONICAL_EPSILON,
   KINEMATIC_ANGULAR_TOLERANCE,
@@ -35,7 +35,7 @@ import {
   planeIntersectionLine,
   planeNormalFromOrientation,
   selectDownwardDirection,
-} from '@geokinematics/geometry';
+} from '@terrane-labs/geometry';
 import { DEFAULT_PLANAR_AZIMUTH_SECTOR_DEG, DIRECT_TOPPLING_AZIMUTH_SECTOR_DEG } from './constants';
 
 export * from './constants';
