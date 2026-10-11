@@ -1,12 +1,12 @@
-# Contributing to GeoKinematics-3D
+# Contributing to Terrane Slope
 
-GeoKinematics-3D is a browser-based rock-slope kinematic analysis tool built on strict coordinate conventions and deterministic geometry. If you break a coordinate convention or introduce a numerical inconsistency, it propagates into wrong engineering results. Read the scientific conventions and architecture boundaries below before submitting changes.
+Terrane Slope is a browser-based rock-slope kinematic analysis tool built on strict coordinate conventions and deterministic geometry. If you break a coordinate convention or introduce a numerical inconsistency, it propagates into wrong engineering results. Read the scientific conventions and architecture boundaries below before submitting changes.
 
 ---
 
 ## Architectural Principles
 
-GeoKinematics-3D enforces strict boundaries between domain types, pure geometry, kinematic evaluation, and presentation layers:
+Terrane Slope enforces strict boundaries between domain types, pure geometry, kinematic evaluation, and presentation layers:
 
 1. **Scientific Logic Isolation:** All geological and geometric mathematics reside in `packages/*` and `crates/*`. User interface components in `apps/web` and `packages/ui` present data and handle user interactions, but must never own or alter scientific algorithms (see ADR-005).
 2. **Direction of Dependencies:** Packages must never import from an application. `packages/kinematics` imports from `packages/geometry` and `packages/domain`. `packages/ui` imports from `packages/geometry` and `packages/domain`. Applications consume packages.
@@ -82,7 +82,7 @@ Always ensure your changes produce zero ESLint warnings and zero Rust clippy war
 
 ## Running Tests
 
-GeoKinematics-3D includes multi-layered test suites that must pass before any change is merged:
+Terrane Slope includes multi-layered test suites that must pass before any change is merged:
 
 1. **TypeScript Unit Tests (Vitest):** Tests vector math, stereonet projection, and kinematic analysis.
    ```sh

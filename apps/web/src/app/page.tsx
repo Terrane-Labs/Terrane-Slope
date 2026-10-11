@@ -176,10 +176,10 @@ export default function HomePage() {
   return (
     <main style={{ fontFamily: 'system-ui, sans-serif' }}>
       <h1 style={{ padding: '16px 20px', margin: 0, fontSize: 18, color: '#222' }}>
-        GeoKinematics-3D
+        Terrane Slope
       </h1>
       <p style={{ margin: '0 20px 12px', fontSize: 13, color: '#666' }}>
-        Phase 1D.5 — Stereonet workspace integration
+        Phase 2A.3 — Planar and toppling kinematic zones
       </p>
 
       <div

@@ -14,7 +14,7 @@ If you find a security issue, please report it privately rather than opening a p
 ### How to Report
 
 Email **nabielnovelkhubran@gmail.com** with the subject line:
-`[SECURITY] GeoKinematics-3D Vulnerability Report`
+`[SECURITY] Terrane Slope Vulnerability Report`
 
 Include:
 

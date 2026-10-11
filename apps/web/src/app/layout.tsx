@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './styles.css';
 
 export const metadata: Metadata = {
-  title: 'GeoKinematics-3D',
-  description: 'Computational geology workspace',
+  title: 'Terrane Slope',
+  description: 'Rock-slope kinematic analysis workspace',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
