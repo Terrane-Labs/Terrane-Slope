@@ -17,12 +17,12 @@
     "@terrane-labs/ui": "workspace:*",
     "next": "^15.5.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react-dom": "^19.3.0",
     "three": "^0.180.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/react-dom": "^19.3.0",
     "@types/three": "^0.180.0"
   }
 }
