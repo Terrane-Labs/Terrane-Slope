@@ -11,5 +11,8 @@ target/
 *.tsbuildinfo
 .env*
 !.env.example
-token-saver/
-.token-saver.json
+AGENTS.md
+.claude*
+.cursor*
+.gemini*
+.ai/
